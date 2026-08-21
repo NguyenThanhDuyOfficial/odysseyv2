@@ -11,6 +11,7 @@
       "outputs": [".next/**", "!.next/cache/**", "!.next/dev/**", "dist/**"]
     },
     "lint": {},
+    "type-check": {},
     "test": {},
     "test:e2e": {}
   }
