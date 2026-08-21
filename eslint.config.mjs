@@ -7,9 +7,11 @@ export default [
   },
   ...libraryConfig,
   {
-    parser: tsParser,
-    parserOptions: {
-      project: true,
+    languageOptions: {
+      parser: tsParser,
+      parserOptions: {
+        project: true,
+      },
     },
   },
   {
