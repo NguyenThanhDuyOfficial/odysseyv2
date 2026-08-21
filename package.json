@@ -19,10 +19,16 @@
     "@commitlint/config-conventional": "^21.2.2",
     "@odyssey/eslint-config": "workspace:*",
     "@odyssey/typescript-config": "workspace:*",
+    "@playwright/test": "^1.62.1",
+    "@types/node": "^26.2.0",
+    "@typescript-eslint/parser": "^8.67.0",
+    "eslint": "^9.39.5",
+    "globals": "^16.5.0",
     "husky": "^9.1.7",
     "lint-staged": "^17.3.0",
     "prettier": "^3.9.6",
-    "turbo": "^2.9.6"
+    "turbo": "^2.9.6",
+    "vitest": "^4.1.11"
   },
   "devEngines": {
     "packageManager": {
