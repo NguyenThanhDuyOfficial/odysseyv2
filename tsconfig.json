@@ -1,0 +1,6 @@
+{
+  "extends": "@odyssey/typescript-config/base.json",
+  "compilerOptions": {
+    "strictNullChecks": true
+  }
+}
