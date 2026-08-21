@@ -5,7 +5,8 @@
   "private": true,
   "exports": {
     "./base": "./base.js",
-    "./library": "./library.js"
+    "./library": "./library.js",
+    "./prettier-base": "./prettier-base.js"
   },
   "devDependencies": {
     "@eslint/js": "^9.31.0",

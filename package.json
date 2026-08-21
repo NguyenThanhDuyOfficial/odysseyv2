@@ -14,8 +14,9 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "@odyssey/typescript-config": "workspace:*",
     "@odyssey/eslint-config": "workspace:*",
+    "@odyssey/typescript-config": "workspace:*",
+    "prettier": "^3.9.6",
     "turbo": "^2.9.6"
   },
   "devEngines": {
