@@ -1,0 +1,30 @@
+{
+  "name": "@odyssey/database",
+  "version": "1.0.0",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:seed": "",
+    "dev": "tsc --watch",
+    "generate": "drizzle-kit generate",
+    "lint": "eslint . --max-warnings 0",
+    "prebuild": "pnpm run generate",
+    "predev": "pnpm run generate",
+    "studio": "drizzle-kit studio"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "drizzle-orm": "1.0.0-rc.4",
+    "pg": "^8.23.0"
+  },
+  "devDependencies": {
+    "@odyssey/eslint-config": "workspace:*",
+    "@odyssey/typescript-config": "workspace:*",
+    "@types/pg": "^8.23.1",
+    "drizzle-kit": "1.0.0-rc.4",
+    "tsx": "^4.23.12"
+  }
+}

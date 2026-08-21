@@ -6,13 +6,16 @@
   "license": "GPL-3.0-only",
   "private": true,
   "scripts": {
-    "dev": "turbo run dev",
     "build": "turbo run build",
+    "db:migrate": "turbo run db:migrate",
+    "db:push": "turbo run db:push",
+    "dev": "turbo run dev",
     "test": "turbo run test",
     "test:e2e": "turbo run test:e2e",
     "lint": "turbo run lint",
     "type-check": "turbo run type-check",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "generate": "turbo run generate",
     "prepare": "husky"
   },
   "devDependencies": {
