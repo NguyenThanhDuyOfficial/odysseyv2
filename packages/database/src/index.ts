@@ -15,7 +15,7 @@ async function main() {
   await db.insert(usersTable).values(user);
   console.log('new user created');
 
-  const users: any = await db.select().from(usersTable);
+  const users = await db.select().from(usersTable);
   console.log('Getting all users from the database: ', users);
 
   if (!user.email) {

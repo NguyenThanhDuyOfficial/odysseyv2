@@ -1,6 +1,5 @@
 import { defineRelations } from 'drizzle-orm';
 import {
-  pgTable,
   uuid,
   varchar,
   text,
@@ -9,6 +8,7 @@ import {
   pgEnum,
   integer,
   snakeCase,
+  AnyPgColumn,
 } from 'drizzle-orm/pg-core';
 
 export const timestamps = {
@@ -76,7 +76,7 @@ export const comments = snakeCase.table('comments', {
   authorId: uuid()
     .notNull()
     .references(() => users.id, { onDelete: 'cascade' }),
-  parentId: uuid().references((): any => comments.id),
+  parentId: uuid().references((): AnyPgColumn => comments.id),
   ...timestamps,
 });
 
@@ -85,7 +85,7 @@ export const categories = snakeCase.table('categories', {
   name: varchar({ length: 100 }).notNull().unique(),
   slug: varchar({ length: 100 }).notNull().unique(),
   description: varchar({ length: 255 }),
-  parentId: uuid().references((): any => categories.id),
+  parentId: uuid().references((): AnyPgColumn => categories.id),
   ...timestamps,
 });
 
