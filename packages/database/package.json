@@ -8,7 +8,6 @@
     "migrate": "drizzle-kit migrate",
     "push": "drizzle-kit push",
     "seed": "",
-    "dev": "tsc --watch",
     "generate": "drizzle-kit generate",
     "lint": "eslint . --max-warnings 0",
     "prebuild": "pnpm run generate",
