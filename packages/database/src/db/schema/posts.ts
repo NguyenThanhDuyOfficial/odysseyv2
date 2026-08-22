@@ -29,6 +29,7 @@ export const posts = snakeCase.table(
     featuredImageUrl: text(),
     status: postStatusEnum().default('draft').notNull(),
     viewCount: integer().default(0),
+    voteCount: integer().default(0),
     publishedAt: timestamp({ withTimezone: true }),
     authorId: uuid()
       .notNull()
@@ -37,6 +38,8 @@ export const posts = snakeCase.table(
     ...timestamps,
   },
   (table) => [
+    index('posts_view_count_idx').on(table.viewCount),
+    index('posts_vote_count_idx').on(table.voteCount),
     index('posts_author_id_idx').on(table.authorId),
     index('posts_updated_by_idx').on(table.updatedBy),
     index('posts_status_idx').on(table.status),
