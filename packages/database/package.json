@@ -5,9 +5,9 @@
     ".": "./src/index.ts"
   },
   "scripts": {
-    "db:migrate": "drizzle-kit migrate",
-    "db:push": "drizzle-kit push",
-    "db:seed": "",
+    "migrate": "drizzle-kit migrate",
+    "push": "drizzle-kit push",
+    "seed": "",
     "dev": "tsc --watch",
     "generate": "drizzle-kit generate",
     "lint": "eslint . --max-warnings 0",

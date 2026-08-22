@@ -7,8 +7,9 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
-    "db:migrate": "turbo run db:migrate",
-    "db:push": "turbo run db:push",
+    "db:generate": "turbo run generate --filter @odyssey/database",
+    "db:migrate": "turbo run migrate --filter @odyssey/database",
+    "db:push": "turbo run push --filter @odyssey/database",
     "dev": "turbo run dev",
     "test": "turbo run test",
     "test:e2e": "turbo run test:e2e",

@@ -1,9 +1,10 @@
 import 'dotenv/config';
 import { drizzle } from 'drizzle-orm/node-postgres';
-import { users as usersTable } from './db/schema';
 import { eq } from 'drizzle-orm';
+import { relations } from './db/relations';
+import { users as usersTable } from './db/schema/users';
 
-export const db = drizzle({ connection: process.env.DATABASE_URL! });
+export const db = drizzle(process.env.DATABASE_URL!, { relations });
 
 async function main() {
   const user: typeof usersTable.$inferInsert = {

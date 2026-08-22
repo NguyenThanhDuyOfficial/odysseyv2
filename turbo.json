@@ -11,13 +11,13 @@
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**", "!.next/dev/**", "dist/**"]
     },
-    "db:migrate": {
+    "migrate": {
       "cache": false
     },
-    "db:push": {
+    "push": {
       "cache": false
     },
-    "db:seed": {
+    "seed": {
       "cache": false
     },
     "generate": {
