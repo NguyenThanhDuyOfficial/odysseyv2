@@ -20,7 +20,7 @@ export default function Header() {
     },
   ];
   return (
-    <header className="sticky top-0 z-10 h-20 px-5 md:px-20 flex items-center justify-between bg-background">
+    <header className="sticky top-0 z-10 w-full h-20 container mx-auto px-5 md:px-20 flex items-center justify-between bg-background">
       {isMenuOpen && (
         <div className="absolute top-20 left-0 w-full min-h-[calc(100dvh-5rem)] py-8 flex flex-col gap-4 items-center bg-background">
           {navbarLinks.map((link, index) => (

@@ -10,41 +10,48 @@ export default async function HomePage() {
   const discordUrl = process.env.NEXT_PUBLIC_DISCORD_URL || '/';
 
   return (
-    <main className="min-h-[calc(100dvh-5rem)] px-5 pb-8 flex flex-col gap-4 justify-between">
-      <div className="relative w-full aspect-square">
-        <Image
-          src="/page/landing/hero.png"
-          alt={t('heroImage')}
-          fill
-          className="object-cover bg-transparent"
-          priority
-        />
-      </div>
-      <div className="space-y-2">
-        <h1 className="whitespace-pre-line">{t('title')}</h1>
-        <p className="max-w-60">
-          Học tập, tinh tấn và tìm đến hạnh phúc cùng với Odyssey.
-        </p>
-      </div>
-      <div>
-        <Button
-          className="text-center"
-          nativeButton={false}
-          render={<Link href={discordUrl} />}
-        >
-          <SiDiscord />
-          Discord
-        </Button>
-      </div>
-      <div>
-        <p>
-          {t('helper')}
-          <Link href={messengerUrl} className="link text-lg">
-            Messenger
-          </Link>
-          .
-        </p>
-      </div>
+    <main className="">
+      <section className="px-5 pb-8 flex flex-col gap-16 md:px-20 md:py-20 md:flex-row-reverse md:justify-center md:items-center md:gap-40">
+        <div className="w-full max-w-100 ">
+          <div className="relative aspect-square ">
+            <Image
+              src="/page/landing/hero.png"
+              alt={t('heroImage')}
+              fill
+              className="object-cover bg-transparent"
+              sizes="(max-width: 768px) 100vw, 360px"
+              priority
+            />
+          </div>
+        </div>
+        <div className="w-full max-w-3xs flex flex-col gap-4 justify-center">
+          <div className="space-y-2">
+            <h1 className="whitespace-pre-line">{t('title')}</h1>
+            <p className="max-w-60">
+              Học tập, tinh tấn và tìm đến hạnh phúc cùng với Odyssey.
+            </p>
+          </div>
+          <div>
+            <Button
+              className="text-center"
+              nativeButton={false}
+              render={<Link href={discordUrl} />}
+            >
+              <SiDiscord />
+              Discord
+            </Button>
+          </div>
+          <div>
+            <p>
+              {t('helper')}
+              <Link href={messengerUrl} className="link text-lg">
+                Messenger
+              </Link>
+              .
+            </p>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
