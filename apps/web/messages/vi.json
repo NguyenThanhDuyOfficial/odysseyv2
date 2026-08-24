@@ -1,4 +1,8 @@
 {
+  "common": {
+    "dark": "Đổi sang nền tối",
+    "light": "Đổi sang nền sáng"
+  },
   "Header": {
     "goToHome": "Về trang chính",
     "openNavbar": "Mở thanh điều hướng",
@@ -8,6 +12,7 @@
     "login": "Đăng nhập"
   },
   "HomePage": {
+    "heroImage": "Ảnh trang trí",
     "title": "Học,\nHọc nữa,\nHọc mãi,",
     "description": "Học tập, tinh tấn, và tìm đến hạnh phúc cùng với Odyssey",
     "helper": "Cần hỗ trợ? vào "

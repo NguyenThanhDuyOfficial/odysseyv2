@@ -3,9 +3,11 @@
 import { useTheme } from '@wrksz/themes/client';
 import { MoonIcon, SunIcon } from 'lucide-react';
 import { Button } from '@odyssey/ui/components/ui/button';
+import { useTranslations } from 'next-intl';
 
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
+  const t = useTranslations('common');
 
   return (
     <div className="">
@@ -14,6 +16,7 @@ export function ThemeToggle() {
         variant={resolvedTheme === 'light' ? 'outline' : 'ghost'}
         type="button"
         onClick={() => setTheme('light')}
+        aria-label={t('light')}
       >
         <SunIcon />
       </Button>
@@ -23,6 +26,7 @@ export function ThemeToggle() {
         variant={resolvedTheme === 'dark' ? 'outline' : 'ghost'}
         type="button"
         onClick={() => setTheme('dark')}
+        aria-label={t('dark')}
       >
         <MoonIcon />
       </Button>

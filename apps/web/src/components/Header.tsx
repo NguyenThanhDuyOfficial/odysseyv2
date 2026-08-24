@@ -20,9 +20,9 @@ export default function Header() {
     },
   ];
   return (
-    <header className="relative h-20 px-5 md:px-20 flex items-center justify-between">
+    <header className="sticky top-0 z-10 h-20 px-5 md:px-20 flex items-center justify-between bg-background">
       {isMenuOpen && (
-        <div className="absolute top-20 left-0 w-full min-h-[calc(100vh-20rem)] py-8 flex flex-col gap-4 items-center bg-background">
+        <div className="absolute top-20 left-0 w-full min-h-[calc(100dvh-5rem)] py-8 flex flex-col gap-4 items-center bg-background">
           {navbarLinks.map((link, index) => (
             <Link key={index} href={link.href}>
               {link.title}
@@ -51,7 +51,7 @@ export default function Header() {
           </Link>
         ))}
       </div>
-      <div className="flex gap-4 items-center ">
+      <div className="flex gap-2 items-center ">
         <ThemeToggle />
         <Button
           variant="default"

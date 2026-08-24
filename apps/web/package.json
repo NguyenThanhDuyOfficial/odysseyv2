@@ -10,6 +10,7 @@
     "check-types": "next typegen && tsc --noEmit"
   },
   "dependencies": {
+    "@icons-pack/react-simple-icons": "^13.15.1",
     "@odyssey/ui": "workspace:*",
     "@wrksz/themes": "2.0.0-beta.1",
     "axios": "^1.19.0",
