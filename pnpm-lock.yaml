@@ -385,9 +385,6 @@ importers:
         specifier: ^8.23.0
         version: 8.23.0
     devDependencies:
-      '@odyssey/error-handling':
-        specifier: workspace:*
-        version: link:../error-handling
       '@odyssey/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config

@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  transpilePackages: ['@odyssey/ui'],
 };
 const withNextIntl = createNextIntlPlugin();
 export default withNextIntl(nextConfig);

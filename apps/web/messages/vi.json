@@ -1,5 +1,7 @@
 {
-  "Navbar": {
+  "Header": {
+    "goToHome": "Về trang chính",
+    "openNavbar": "Mở thanh điều hướng",
     "appName": "Odyssey",
     "guide": "Hướng dẫn",
     "blog": "Đọc Blogs",
