@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "base-nova",
+  "rsc": false,
+  "tsx": true,
+  "tailwind": {
+    "config": "",
+    "css": "src/styles/globals.css",
+    "baseColor": "neutral",
+    "cssVariables": true
+  },
+  "aliases": {
+    "components": "@odyssey/ui/components",
+    "utils": "@odyssey/ui/lib/utils",
+    "ui": "@odyssey/ui/components/ui",
+    "lib": "@odyssey/ui/lib",
+    "hooks": "@odyssey/ui/hooks"
+  },
+  "rtl": false,
+  "menuColor": "default",
+  "iconLibrary": "lucide"
+}

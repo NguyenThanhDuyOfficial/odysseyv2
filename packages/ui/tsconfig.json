@@ -1,0 +1,11 @@
+{
+  "extends": "@odyssey/typescript-config/base.json",
+  "compilerOptions": {
+    "strictNullChecks": true,
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
