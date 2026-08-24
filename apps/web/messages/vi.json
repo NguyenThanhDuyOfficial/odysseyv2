@@ -1,4 +1,24 @@
 {
+  "error": {
+    "USERNAME_REQUIRED": "Phải có tên",
+    "USERNAME_TOO_LONG": "Tên quá dài",
+    "EMAIL_INVALID": "Email không hợp lệ",
+    "EMAIL_REQUIRED": "Phải có email",
+    "EMAIL_TOO_LONG": "Email quá dài",
+    "PASSWORD_TOO_SHORT": "Password quá ngắn",
+    "PASSWORD_TOO_LONG": "Password quá dài",
+    "PASSWORD_NO_UPPERCASE": "Password phải có chữ hoa",
+    "PASSWORD_NO_LOWERCASE": "Password phải có chữ thường",
+    "PASSWORD_NO_NUMBER": "Password phải có số",
+    "PASSWORD_NO_SPECIAL_CHAR": "Password phải có ký tự đặc biệt",
+    "EMAIL_ALREADY_REGISTERED": "Email đã được đăng ký",
+    "INVALID_EMAIL_OR_PASSWORD": "Email hoặc mật khẩu không đúng",
+    "ACCOUNT_IS_DISABLED": "Tài khoản đã bị khóa",
+    "ACCOUNT_DATA_INCONSISTENCY": "Đây là lỗi của chúng tôi",
+    "INVALID_TOKEN": "Token không hợp lệ",
+    "INVALID_OR_EXPIRED_TOKEN": "Token hết hạn hoặc không hợp lệ",
+    "EXPIRED_TOKEN": "Token đã hết hạn"
+  },
   "common": {
     "dark": "Đổi sang nền tối",
     "light": "Đổi sang nền sáng"

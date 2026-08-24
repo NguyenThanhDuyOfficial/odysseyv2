@@ -1,0 +1,16 @@
+{
+  "name": "@odyssey/shared",
+  "version": "1.0.0",
+  "exports": {
+    ".": "./src/index.ts",
+    "./dto": "./src/dto/index.ts"
+  },
+  "dependencies": {
+    "@odyssey/database": "workspace:*",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@odyssey/eslint-config": "workspace:*",
+    "@odyssey/typescript-config": "workspace:*"
+  }
+}

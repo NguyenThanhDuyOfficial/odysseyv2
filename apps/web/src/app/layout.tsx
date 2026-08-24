@@ -4,6 +4,7 @@ import './globals.css';
 import { ThemeProvider } from '@wrksz/themes/next';
 import { NextIntlClientProvider } from 'next-intl';
 import Header from '../components/Header';
+import TanstackQueryProvider from '../providers/tanstack-query-provider';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -30,8 +31,10 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       <body className="min-h-full flex flex-col">
         <ThemeProvider>
           <NextIntlClientProvider>
-            <Header />
-            {children}
+            <TanstackQueryProvider>
+              <Header />
+              {children}
+            </TanstackQueryProvider>
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>

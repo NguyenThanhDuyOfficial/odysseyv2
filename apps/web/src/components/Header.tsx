@@ -9,6 +9,7 @@ import { ThemeToggle } from './theme-toggle';
 export default function Header() {
   const t = useTranslations('Header');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isFormOpen, setIsFormOpen] = useStaet(false);
   const navbarLinks = [
     {
       title: t('guide'),
@@ -21,15 +22,6 @@ export default function Header() {
   ];
   return (
     <header className="sticky top-0 z-10 w-full h-20 container mx-auto px-5 md:px-20 flex items-center justify-between bg-background">
-      {isMenuOpen && (
-        <div className="absolute top-20 left-0 w-full min-h-[calc(100dvh-5rem)] py-8 flex flex-col gap-4 items-center bg-background">
-          {navbarLinks.map((link, index) => (
-            <Link key={index} href={link.href}>
-              {link.title}
-            </Link>
-          ))}
-        </div>
-      )}
       <div className="flex gap-4">
         <Button
           variant="ghost"
@@ -56,11 +48,25 @@ export default function Header() {
         <Button
           variant="default"
           nativeButton={false}
-          render={<Link href="login"></Link>}
+          onClick={() => setIsFormOpen(true)}
         >
           {t('login')}
         </Button>
       </div>
+
+      {isMenuOpen && (
+        <div className="absolute top-20 left-0 w-full min-h-[calc(100dvh-5rem)] py-8 flex flex-col gap-4 items-center bg-background">
+          {navbarLinks.map((link, index) => (
+            <Link key={index} href={link.href}>
+              {link.title}
+            </Link>
+          ))}
+        </div>
+      )}
+
+      {isFormOpen && (
+        <div className="absolute top-20 left-0 w-full min-h-[calc(100dvh-5rem)] py-8 flex flex-col gap-4 items-center bg-background"></div>
+      )}
     </header>
   );
 }
