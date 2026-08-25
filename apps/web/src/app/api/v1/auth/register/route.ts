@@ -7,7 +7,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { authService } from '../../../../../services/auth.service';
 import { formatError } from '@odyssey/error-handling';
 
-export default async function POST(request: NextRequest) {
+export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const result = RegisterSchema.safeParse(body);

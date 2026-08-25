@@ -6,10 +6,24 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { ThemeToggle } from './theme-toggle';
+import AuthForm from './AuthForm';
+import useAuthStore from '../store/authStore';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@odyssey/ui/components/ui/dropdown-menu';
+import { useMutation } from '@tanstack/react-query';
+import { httpClient } from '../lib/httpClient';
+import { useShallow } from 'zustand/shallow';
+
 export default function Header() {
   const t = useTranslations('Header');
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isFormOpen, setIsFormOpen] = useStaet(false);
+  const [isFormOpen, setIsFormOpen] = useState(false);
   const navbarLinks = [
     {
       title: t('guide'),
@@ -20,6 +34,32 @@ export default function Header() {
       href: 'blog',
     },
   ];
+
+  const { isAuthenticated, user, logout } = useAuthStore(
+    useShallow((state) => ({
+      isAuthenticated: state.isAuthenticated,
+      user: state.user,
+      logout: state.logout,
+    })),
+  );
+
+  const logoutMutation = useMutation({
+    mutationFn: async () => {
+      const response = await httpClient.post('/auth/logout');
+      return response;
+    },
+    onSuccess: () => {
+      logout();
+    },
+    onError: (error) => {
+      console.error(error);
+      logout();
+    },
+  });
+
+  const handleLogout = () => {
+    logoutMutation.mutate();
+  };
   return (
     <header className="sticky top-0 z-10 w-full h-20 container mx-auto px-5 md:px-20 flex items-center justify-between bg-background">
       <div className="flex gap-4">
@@ -45,13 +85,30 @@ export default function Header() {
       </div>
       <div className="flex gap-2 items-center ">
         <ThemeToggle />
-        <Button
-          variant="default"
-          nativeButton={false}
-          onClick={() => setIsFormOpen(true)}
-        >
-          {t('login')}
-        </Button>
+        {isAuthenticated ? (
+          <DropdownMenu>
+            <DropdownMenuTrigger
+              render={
+                <Button variant="outline">
+                  {user?.displayName ? user.displayName : user?.username}
+                </Button>
+              }
+            ></DropdownMenuTrigger>
+            <DropdownMenuContent className="w-40" align="start">
+              <DropdownMenuGroup>
+                <DropdownMenuItem>
+                  <Button variant="ghost" onClick={handleLogout}>
+                    {t('logout')}
+                  </Button>
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        ) : (
+          <Button variant="default" onClick={() => setIsFormOpen(!isFormOpen)}>
+            {t('login')}
+          </Button>
+        )}
       </div>
 
       {isMenuOpen && (
@@ -64,8 +121,10 @@ export default function Header() {
         </div>
       )}
 
-      {isFormOpen && (
-        <div className="absolute top-20 left-0 w-full min-h-[calc(100dvh-5rem)] py-8 flex flex-col gap-4 items-center bg-background"></div>
+      {isFormOpen && !isAuthenticated && (
+        <div className="absolute top-20 left-0 w-full min-h-[calc(100dvh-5rem)] py-8 pb-20 flex flex-col gap-4 items-center justify-center bg-background/40 backdrop-blur-sm">
+          <AuthForm />
+        </div>
       )}
     </header>
   );

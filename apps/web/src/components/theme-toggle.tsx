@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
-  const t = useTranslations('common');
+  const t = useTranslations('Common');
 
   return (
     <div className="">

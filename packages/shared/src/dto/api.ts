@@ -1,23 +1,28 @@
 import { ZodError } from 'zod';
 
-export interface ApiResponse<T = unknown> {
-  success: boolean;
+export interface ApiSuccessResponse<T> {
+  success: true;
   message?: string;
-  data?: T;
-  error?: {
+  data: T;
+}
+
+export interface ApiErrorResponse {
+  success: false;
+  error: {
     code: string;
     message: string;
     details?: Record<string, unknown> | ZodError;
   };
-  timestamp: string;
 }
 
-export function successResponse<T>(data: T, message?: string): ApiResponse<T> {
+export function successResponse<T>(
+  data: T,
+  message?: string,
+): ApiSuccessResponse<T> {
   return {
     success: true,
     message,
     data,
-    timestamp: new Date().toISOString(),
   };
 }
 
@@ -25,10 +30,11 @@ export function errorResponse(
   message: string,
   code = 'ERROR',
   details?: Record<string, unknown> | ZodError,
-): ApiResponse {
+): ApiErrorResponse {
   return {
     success: false,
     error: { code, message, details },
-    timestamp: new Date().toISOString(),
   };
 }
+
+export type ApiResponse<T> = ApiSuccessResponse<T> | ApiErrorResponse;

@@ -1,5 +1,5 @@
 {
-  "error": {
+  "Error": {
     "USERNAME_REQUIRED": "Phải có tên",
     "USERNAME_TOO_LONG": "Tên quá dài",
     "EMAIL_INVALID": "Email không hợp lệ",
@@ -17,7 +17,8 @@
     "ACCOUNT_DATA_INCONSISTENCY": "Đây là lỗi của chúng tôi",
     "INVALID_TOKEN": "Token không hợp lệ",
     "INVALID_OR_EXPIRED_TOKEN": "Token hết hạn hoặc không hợp lệ",
-    "EXPIRED_TOKEN": "Token đã hết hạn"
+    "EXPIRED_TOKEN": "Token đã hết hạn",
+    "LOGIN_FAILED": "Thất bại"
   },
   "common": {
     "dark": "Đổi sang nền tối",
@@ -29,7 +30,17 @@
     "appName": "Odyssey",
     "guide": "Hướng dẫn",
     "blog": "Đọc Blogs",
-    "login": "Đăng nhập"
+    "login": "Đăng nhập",
+    "logout": "Đăng xuất"
+  },
+  "AuthForm": {
+    "login": "Đăng nhập",
+    "register": "Đăng ký",
+    "email": "Email",
+    "password": "Mật khẩu",
+    "username": "Tên người dùng",
+    "isLoading": "Odyssey đang làm nhiệm vụ...",
+    "error": "thất bại"
   },
   "HomePage": {
     "heroImage": "Ảnh trang trí",
