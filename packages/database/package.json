@@ -2,7 +2,9 @@
   "name": "@odyssey/database",
   "version": "1.0.0",
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./db/repositories/*": "./src/db/repositories/index.ts",
+    "./db/schema/*": "./src/db/schema/index.ts"
   },
   "scripts": {
     "migrate": "drizzle-kit migrate",
@@ -15,6 +17,7 @@
     "studio": "drizzle-kit studio"
   },
   "dependencies": {
+    "@odyssey/error-handling": "workspace:*",
     "dotenv": "^17.4.2",
     "drizzle-orm": "1.0.0-rc.4",
     "pg": "^8.23.0"

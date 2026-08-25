@@ -50,5 +50,6 @@ export const posts = snakeCase.table(
   ],
 );
 
+export type PostStatus = (typeof postStatusEnum)['enumValues'][number];
 export type Post = typeof posts.$inferSelect;
 export type NewPost = typeof posts.$inferInsert;

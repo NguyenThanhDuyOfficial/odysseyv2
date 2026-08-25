@@ -1,14 +1,14 @@
-import { libraryConfig } from '@odyssey/eslint-config/library';
-import { defineConfig } from 'eslint/config';
-import tsParser from '@typescript-eslint/parser';
+import { libraryconfig } from '@odyssey/eslint-config/library';
+import { defineconfig } from 'eslint/config';
+import tsparser from '@typescript-eslint/parser';
 
-export default defineConfig([
-  libraryConfig,
+export default defineconfig([
+  libraryconfig,
   {
     files: ['src/**/*.ts'],
-    languageOptions: {
-      parser: tsParser,
-      parserOptions: {
+    languageoptions: {
+      parser: tsparser,
+      parseroptions: {
         project: true,
       },
     },
@@ -16,7 +16,7 @@ export default defineConfig([
       'turbo/no-undeclared-env-vars': [
         'error',
         {
-          allowList: ['NODE_ENV'],
+          allowlist: ['node_env'],
         },
       ],
     },

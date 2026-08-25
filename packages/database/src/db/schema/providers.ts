@@ -36,5 +36,5 @@ export const providers = snakeCase.table(
   ],
 );
 
-export type Provier = typeof providers.$inferSelect;
+export type Provider = typeof providers.$inferSelect;
 export type NewProvider = typeof providers.$inferInsert;

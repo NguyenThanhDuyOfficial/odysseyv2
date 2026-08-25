@@ -417,9 +417,6 @@ importers:
 
   packages/database:
     dependencies:
-      '@odyssey/error-handling':
-        specifier: workspace:*
-        version: link:../error-handling
       dotenv:
         specifier: ^17.4.2
         version: 17.4.2
