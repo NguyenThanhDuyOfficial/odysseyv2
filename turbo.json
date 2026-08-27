@@ -11,6 +11,9 @@
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**", "!.next/dev/**", "dist/**"]
     },
+    "reset": {
+      "cache": false
+    },
     "migrate": {
       "cache": false
     },

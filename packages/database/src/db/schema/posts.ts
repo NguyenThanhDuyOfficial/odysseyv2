@@ -31,10 +31,10 @@ export const posts = snakeCase.table(
     viewCount: integer().default(0),
     voteCount: integer().default(0),
     publishedAt: timestamp({ withTimezone: true }),
-    authorId: uuid()
+    authorId: text()
       .notNull()
       .references(() => users.id, { onDelete: 'cascade' }),
-    updatedBy: uuid().references(() => users.id),
+    updatedBy: text().references(() => users.id),
     ...timestamps,
   },
   (table) => [

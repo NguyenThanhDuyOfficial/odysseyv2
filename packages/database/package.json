@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "exports": {
     ".": "./src/index.ts",
-    "./db/repositories/*": "./src/db/repositories/index.ts",
-    "./db/schema/*": "./src/db/schema/index.ts"
+    "./schema": "./src/db/schema/index.ts",
+    "./repository": "./src/db/repositories/index.ts"
   },
   "scripts": {
+    "reset": "docker exec -it odyssey-db-1 psql -U user -d db -c \" DROP SCHEMA public CASCADE; CREATE SCHEMA public; \" && rm -rf drizzle",
     "migrate": "drizzle-kit migrate",
     "push": "drizzle-kit push",
     "seed": "",
@@ -17,6 +18,7 @@
     "studio": "drizzle-kit studio"
   },
   "dependencies": {
+    "@auth/drizzle-adapter": "^1.11.3",
     "@odyssey/error-handling": "workspace:*",
     "dotenv": "^17.4.2",
     "drizzle-orm": "1.0.0-rc.4",

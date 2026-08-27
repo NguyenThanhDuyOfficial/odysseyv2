@@ -3,7 +3,7 @@
 import { Button } from '@odyssey/ui/components/ui/button';
 import { MenuIcon, XIcon } from 'lucide-react';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { ThemeToggle } from './theme-toggle';
 import AuthForm from './AuthForm';
@@ -18,6 +18,8 @@ import {
 import { useMutation } from '@tanstack/react-query';
 import { httpClient } from '../lib/httpClient';
 import { useShallow } from 'zustand/shallow';
+import { authClient } from '../lib/auth-client';
+import Image from 'next/image';
 
 export default function Header() {
   const t = useTranslations('Header');
@@ -34,6 +36,8 @@ export default function Header() {
       href: 'blog',
     },
   ];
+
+  const { data: session, isPending, error, refetch } = authClient.useSession();
 
   const { isAuthenticated, user, logout } = useAuthStore(
     useShallow((state) => ({
@@ -58,7 +62,11 @@ export default function Header() {
   });
 
   const handleLogout = () => {
-    logoutMutation.mutate();
+    if (session) {
+      authClient.signOut();
+    } else {
+      logoutMutation.mutate();
+    }
   };
   return (
     <header className="sticky top-0 z-10 w-full h-20 container mx-auto px-5 md:px-20 flex items-center justify-between bg-background">
@@ -85,12 +93,25 @@ export default function Header() {
       </div>
       <div className="flex gap-2 items-center ">
         <ThemeToggle />
-        {isAuthenticated ? (
+        {isAuthenticated || session ? (
           <DropdownMenu>
             <DropdownMenuTrigger
               render={
                 <Button variant="outline">
-                  {user?.displayName ? user.displayName : user?.username}
+                  {session?.user && (
+                    <Image
+                      src={session?.user.image}
+                      alt="avatar"
+                      width={24}
+                      height={24}
+                      className="rounded-full"
+                    ></Image>
+                  )}
+                  {session?.user
+                    ? session.user.name
+                    : user?.displayName
+                      ? user.displayName
+                      : user?.username}
                 </Button>
               }
             ></DropdownMenuTrigger>

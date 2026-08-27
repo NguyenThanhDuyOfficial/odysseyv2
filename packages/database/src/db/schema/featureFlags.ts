@@ -20,13 +20,13 @@ export const featureFlags = snakeCase.table(
     name: varchar({ length: 255 }).notNull(),
     description: text(),
     enabled: boolean().default(false).notNull(),
-    createdBy: uuid().references(() => users.id, {
+    createdBy: text().references(() => users.id, {
       onDelete: 'set null',
     }),
-    updatedBy: uuid().references(() => users.id, {
+    updatedBy: text().references(() => users.id, {
       onDelete: 'set null',
     }),
-    deletedBy: uuid().references(() => users.id, {
+    deletedBy: text().references(() => users.id, {
       onDelete: 'set null',
     }),
     deletedAt: timestamp({

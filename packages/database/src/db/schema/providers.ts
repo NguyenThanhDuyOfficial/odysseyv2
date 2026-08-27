@@ -14,16 +14,27 @@ import { sql } from 'drizzle-orm';
 export const providers = snakeCase.table(
   'providers',
   {
-    id: uuid().primaryKey().defaultRandom(),
-    userId: uuid()
+    id: text().primaryKey(),
+    userId: text('user_id')
       .notNull()
       .references(() => users.id, { onDelete: 'cascade' }),
-    provider: varchar({ length: 50 }).notNull(),
-    providerId: varchar({ length: 255 }),
+    provider: text().notNull(),
+    accountId: text('account_id').notNull(),
+    providerId: text('provider_id').notNull(),
+    accessToken: text('access_token'),
+    refreshToken: text('refresh_token'),
+    accessTokenExpiresAt: timestamp('access_token_expires_at', {
+      precision: 6,
+      withTimezone: true,
+    }),
+    refreshTokenExpiresAt: timestamp('refresh_token_expires_at', {
+      precision: 6,
+      withTimezone: true,
+    }),
+    scope: text(),
+    idToken: text('id_token'),
+    hashedPassword: text('hashed_password'),
     email: varchar({ length: 255 }),
-    hashedPassword: varchar({ length: 255 }),
-    refreshToken: text(),
-    tokenExpiresAt: timestamp({ withTimezone: true }),
     ...timestamps,
   },
   (table) => [
@@ -32,7 +43,6 @@ export const providers = snakeCase.table(
     uniqueIndex('uq_providers_provider_provider_id')
       .on(table.provider, table.providerId)
       .where(sql`${table.providerId} IS NOT NULL`),
-    index('providers_token_expires_at_idx').on(table.tokenExpiresAt),
   ],
 );
 

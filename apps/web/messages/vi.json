@@ -20,7 +20,7 @@
     "EXPIRED_TOKEN": "Token đã hết hạn",
     "LOGIN_FAILED": "Thất bại"
   },
-  "common": {
+  "Common": {
     "dark": "Đổi sang nền tối",
     "light": "Đổi sang nền sáng"
   },

@@ -1,25 +1,26 @@
 import {
   pgEnum,
   snakeCase,
-  uuid,
   varchar,
   text,
   boolean,
   timestamp,
+  uuid,
 } from 'drizzle-orm/pg-core';
 import { timestamps } from './columns.helper';
 
 export const roleEnum = pgEnum('role', ['user', 'moderator', 'admin']);
 
 export const users = snakeCase.table('users', {
-  id: uuid('id').primaryKey().defaultRandom(),
-  username: varchar({ length: 255 }).notNull().unique(),
-  displayName: varchar({ length: 255 }),
+  id: text().primaryKey(),
+  username: text().notNull(),
   email: varchar({ length: 255 }).unique(),
-  avatarUrl: text(),
+  emailVerified: boolean('email_verified').notNull().default(false),
+  avatarUrl: text('avatar_url'),
+  display_name: varchar({ length: 255 }),
   role: roleEnum().default('user'),
-  isActive: boolean().default(true),
-  lastLoginAt: timestamp({ withTimezone: true }),
+  isActive: boolean('is_active').default(true),
+  lastLoginAt: timestamp('last_login_at', { withTimezone: true }),
   ...timestamps,
 });
 

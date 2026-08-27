@@ -15,10 +15,14 @@ import { Button } from '@odyssey/ui/components/ui/button';
 import { useTranslations } from 'next-intl';
 import { useMutation } from '@tanstack/react-query';
 import useAuthStore from '../store/authStore';
+import { SignInWithDiscordButton } from './SignInWithDiscordButton';
+import { usePathname } from 'next/navigation';
 
 export default function LoginForm() {
   const t = useTranslations('AuthForm');
   const e = useTranslations('Error');
+
+  const pathname = usePathname();
 
   const login = useAuthStore((state) => state.login);
 
@@ -92,9 +96,14 @@ export default function LoginForm() {
           </p>
         )}
       </div>
-      <Button type="submit" disabled={isLoading} className="mt-4">
-        {isLoading ? t('isLoading') : t('login')}
-      </Button>
+      <div className="flex items-center mt-8 gap-8">
+        <Button type="submit" disabled={isLoading}>
+          {isLoading ? t('isLoading') : t('login')}
+        </Button>
+        <SignInWithDiscordButton
+          callbackURL={pathname}
+        ></SignInWithDiscordButton>
+      </div>
     </form>
   );
 }

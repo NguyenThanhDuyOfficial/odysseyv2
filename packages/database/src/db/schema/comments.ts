@@ -12,7 +12,7 @@ export const comments = snakeCase.table(
     postId: uuid()
       .notNull()
       .references(() => posts.id, { onDelete: 'cascade' }),
-    authorId: uuid()
+    authorId: text()
       .notNull()
       .references(() => users.id, { onDelete: 'cascade' }),
     parentId: uuid().references((): AnyPgColumn => comments.id),
