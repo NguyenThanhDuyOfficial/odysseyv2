@@ -1,5 +1,6 @@
 import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
+import { createMDX } from 'fumadocs-mdx/next';
 
 const nextConfig: NextConfig = {
   typescript: {
@@ -11,5 +12,6 @@ const nextConfig: NextConfig = {
     remotePatterns: [new URL('https://cdn.discordapp.com/**')],
   },
 };
+const withMDX = createMDX();
 const withNextIntl = createNextIntlPlugin();
-export default withNextIntl(nextConfig);
+export default withNextIntl(withMDX(nextConfig));

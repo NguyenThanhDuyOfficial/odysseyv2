@@ -5,6 +5,7 @@ import { ThemeProvider } from '@wrksz/themes/next';
 import { NextIntlClientProvider } from 'next-intl';
 import Header from '../components/Header';
 import TanstackQueryProvider from '../providers/tanstack-query-provider';
+import { RootProvider } from 'fumadocs-ui/provider/next';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -32,8 +33,9 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
         <ThemeProvider>
           <NextIntlClientProvider>
             <TanstackQueryProvider>
-              <Header />
-              {children}
+              <RootProvider search={{ options: { api: '/api/v1/search' } }}>
+                {children}
+              </RootProvider>
             </TanstackQueryProvider>
           </NextIntlClientProvider>
         </ThemeProvider>

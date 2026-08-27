@@ -29,7 +29,7 @@ export default function Header() {
   const navbarLinks = [
     {
       title: t('guide'),
-      href: 'wiki',
+      href: 'docs',
     },
     {
       title: t('blog'),
