@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
     });
 
     return response;
-  } catch (error: any) {
+  } catch (error: unknown) {
     const response = NextResponse.json(formatError(error));
 
     response.cookies.delete('access_token');

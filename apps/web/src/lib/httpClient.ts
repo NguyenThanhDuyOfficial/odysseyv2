@@ -41,31 +41,31 @@ class HttpClient {
       (response) => {
         return response;
       },
-      async (error) => {
-        const originalRequest = error.config;
-        if (error.response?.status === 401 && !originalRequest._retry) {
-          originalRequest._retry = true;
-
-          try {
-            const refreshToken = localStorage.getItem('refreshToken');
-            if (refreshToken) {
-              const response = await axios.post(
-                `${process.env.NEXT_PUBLIC_API_URL}/api/v1/auth/refresh`,
-                {
-                  refreshToken,
-                },
-              );
-              const { accessToken } = response.data;
-              localStorage.setItem('accessToken', accessToken);
-
-              originalRequest.headers.Authorization = `Bearer ${accessToken}`;
-              return this.instance(originalRequest);
-            }
-          } catch (error) {
-            return Promise.reject(error);
-          }
-        }
-        return Promise.reject(error);
+      async () => {
+        // const originalRequest = error.config;
+        // if (error.response?.status === 401 && !originalRequest._retry) {
+        //   originalRequest._retry = true;
+        //
+        //   try {
+        //     const refreshToken = localStorage.getItem('refreshToken');
+        //     if (refreshToken) {
+        //       const response = await axios.post(
+        //         `${process.env.NEXT_PUBLIC_API_URL}/api/v1/auth/refresh`,
+        //         {
+        //           refreshToken,
+        //         },
+        //       );
+        //       const { accessToken } = response.data;
+        //       localStorage.setItem('accessToken', accessToken);
+        //
+        //       originalRequest.headers.Authorization = `Bearer ${accessToken}`;
+        //       return this.instance(originalRequest);
+        //     }
+        //   } catch (error) {
+        //     return Promise.reject(error);
+        //   }
+        // }
+        // return Promise.reject(error);
       },
     );
   }
@@ -75,7 +75,7 @@ class HttpClient {
   }
   public async post<T>(
     url: string,
-    data?: any,
+    data?: unknown,
     config?: AxiosRequestConfig,
   ): Promise<T> {
     const response = await this.instance.post<T>(url, data, config);
@@ -84,7 +84,7 @@ class HttpClient {
 
   public async put<T>(
     url: string,
-    data?: any,
+    data?: unknown,
     config?: AxiosRequestConfig,
   ): Promise<T> {
     const response = await this.instance.put<T>(url, data, config);
@@ -93,7 +93,7 @@ class HttpClient {
 
   public async patch<T>(
     url: string,
-    data?: any,
+    data?: unknown,
     config?: AxiosRequestConfig,
   ): Promise<T> {
     const response = await this.instance.patch<T>(url, data, config);

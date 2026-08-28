@@ -6,8 +6,6 @@ import {
   verifications,
 } from '@odyssey/database';
 import * as schema from '@odyssey/database/schema';
-import NextAuth from 'next-auth';
-import Discord from 'next-auth/providers/discord';
 import { betterAuth } from 'better-auth';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
 

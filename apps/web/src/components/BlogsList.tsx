@@ -6,5 +6,6 @@ export default function BlogsList() {
     queryKey: ['blogs'],
     queryFn: fetchBlogs,
   });
+  console.log(data, isLoading);
   return <div></div>;
 }

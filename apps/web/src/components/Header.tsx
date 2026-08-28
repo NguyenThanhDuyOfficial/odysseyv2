@@ -3,7 +3,7 @@
 import { Button } from '@odyssey/ui/components/ui/button';
 import { MenuIcon, XIcon } from 'lucide-react';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { ThemeToggle } from './theme-toggle';
 import AuthForm from './AuthForm';
@@ -38,6 +38,7 @@ export default function Header() {
   ];
 
   const { data: session, isPending, error, refetch } = authClient.useSession();
+  console.log(session, isPending, error, refetch);
 
   const { isAuthenticated, user, logout } = useAuthStore(
     useShallow((state) => ({

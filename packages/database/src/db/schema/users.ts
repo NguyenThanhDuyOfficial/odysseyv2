@@ -5,7 +5,6 @@ import {
   text,
   boolean,
   timestamp,
-  uuid,
 } from 'drizzle-orm/pg-core';
 import { timestamps } from './columns.helper';
 

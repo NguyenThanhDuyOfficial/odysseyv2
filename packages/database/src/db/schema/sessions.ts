@@ -1,11 +1,9 @@
 import {
-  pgTable,
   text,
   varchar,
   timestamp,
   index,
   snakeCase,
-  uuid,
 } from 'drizzle-orm/pg-core';
 import { users } from './users';
 import { timestamps } from './columns.helper';

@@ -54,6 +54,7 @@ function verifyAccessToken(token: string) {
     return decoded;
   } catch (error) {
     throw new UnauthorizedError('INVALID_OR_EXPIRED_TOKEN');
+    console.log(error);
   }
 }
 
@@ -71,6 +72,7 @@ function verifyRefreshToken(token: string) {
     return decoded;
   } catch (error) {
     throw new UnauthorizedError('INVALID_OR_EXPIRED_TOKEN');
+    console.log(error);
   }
 }
 

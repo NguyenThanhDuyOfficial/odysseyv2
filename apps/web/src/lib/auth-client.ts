@@ -4,7 +4,7 @@ export const authClient = createAuthClient({
 });
 
 export const signInWithDiscord = async () => {
-  const data = await authClient.signIn.social({
+  await authClient.signIn.social({
     provider: 'discord',
   });
 };

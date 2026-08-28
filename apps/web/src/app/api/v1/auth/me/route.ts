@@ -1,4 +1,3 @@
-// apps/web/app/api/auth/me/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { authService } from '../../../../../services/auth.service';
 import { errorResponse, successResponse } from '@odyssey/shared';
@@ -19,7 +18,7 @@ export async function GET(request: NextRequest) {
     const user = await authService.getUserFromToken(token);
 
     return NextResponse.json(successResponse(user));
-  } catch (error: any) {
+  } catch (error: unknown) {
     return NextResponse.json(formatError(error));
   }
 }

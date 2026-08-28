@@ -1,10 +1,4 @@
-import {
-  pgTable,
-  text,
-  timestamp,
-  index,
-  snakeCase,
-} from 'drizzle-orm/pg-core';
+import { text, timestamp, index, snakeCase } from 'drizzle-orm/pg-core';
 import { timestamps } from './columns.helper';
 
 export const verifications = snakeCase.table(

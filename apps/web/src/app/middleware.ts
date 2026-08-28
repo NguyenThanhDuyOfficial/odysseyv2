@@ -50,6 +50,7 @@ export async function middleware(request: NextRequest) {
     await authService.getUserFromToken(token);
     return NextResponse.next();
   } catch (error) {
+    console.log(error);
     if (pathname.startsWith('/api/')) {
       return NextResponse.json(
         errorResponse('Invalid or expired token', 'INVALID_OR_EXPIRED_TOKEN'),

@@ -1,6 +1,5 @@
 import {
   snakeCase,
-  uuid,
   varchar,
   text,
   timestamp,
