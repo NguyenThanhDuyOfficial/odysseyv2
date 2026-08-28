@@ -4,6 +4,7 @@ import './globals.css';
 import { ThemeProvider } from '@wrksz/themes/next';
 import { NextIntlClientProvider } from 'next-intl';
 import TanstackQueryProvider from '../providers/tanstack-query-provider';
+import { TooltipProvider } from '@odyssey/ui/components/ui/tooltip';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -30,7 +31,9 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       <body className="min-h-full flex flex-col">
         <ThemeProvider>
           <NextIntlClientProvider>
-            <TanstackQueryProvider>{children}</TanstackQueryProvider>
+            <TanstackQueryProvider>
+              <TooltipProvider>{children}</TooltipProvider>
+            </TanstackQueryProvider>
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>
