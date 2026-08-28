@@ -1,4 +1,5 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
+import { authClient } from './auth-client';
 
 export interface ApiResponse<T> {
   data: T;
@@ -20,16 +21,20 @@ class HttpClient {
       headers: {
         'Content-Type': 'application/json',
       },
+      withCredentials: true,
     });
 
     this.setupInterceptors();
   }
   private setupInterceptors() {
     this.instance.interceptors.request.use(
-      (config) => {
-        const token = localStorage.getItem('accessToken');
-        if (token) {
-          config.headers.Authorization = `Bearer ${token}`;
+      async (config) => {
+        if (typeof window !== 'undefined') {
+          const { data: session } = authClient.getSession();
+
+          if (session) {
+            config.headers.Authorization = `Bearer ${session.user.id}`;
+          }
         }
         return config;
       },
@@ -41,31 +46,9 @@ class HttpClient {
       (response) => {
         return response;
       },
-      async () => {
-        // const originalRequest = error.config;
-        // if (error.response?.status === 401 && !originalRequest._retry) {
-        //   originalRequest._retry = true;
-        //
-        //   try {
-        //     const refreshToken = localStorage.getItem('refreshToken');
-        //     if (refreshToken) {
-        //       const response = await axios.post(
-        //         `${process.env.NEXT_PUBLIC_API_URL}/api/v1/auth/refresh`,
-        //         {
-        //           refreshToken,
-        //         },
-        //       );
-        //       const { accessToken } = response.data;
-        //       localStorage.setItem('accessToken', accessToken);
-        //
-        //       originalRequest.headers.Authorization = `Bearer ${accessToken}`;
-        //       return this.instance(originalRequest);
-        //     }
-        //   } catch (error) {
-        //     return Promise.reject(error);
-        //   }
-        // }
-        // return Promise.reject(error);
+      async (error) => {
+        console.error('❌ API Error:', error.response?.data || error.message);
+        return Promise.reject(error);
       },
     );
   }

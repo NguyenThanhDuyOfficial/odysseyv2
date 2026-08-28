@@ -16,9 +16,11 @@ import { TextStyleKit } from '@tiptap/extension-text-style';
 export function Tiptap({
   className,
   content,
+  onChangeAction,
 }: {
   className?: string;
   content?: string;
+  onChangeAction?: (content: string) => void;
 }) {
   const t = useTranslations('BlogNew');
   if (!content) {
@@ -45,6 +47,10 @@ export function Tiptap({
         class:
           'prose sm:prose-base lg:prose-lg xl:prose-2xl focus:outline-none',
       },
+    },
+    onUpdate: ({ editor }) => {
+      const html = editor.getHTML();
+      onChangeAction?.(html);
     },
     // Don't render immediately on the server to avoid SSR issues
     immediatelyRender: false,

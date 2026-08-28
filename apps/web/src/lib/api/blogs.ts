@@ -1,8 +1,32 @@
 import { httpClient } from '../httpClient';
-const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http:localhost:3000/api/v1';
+
 export async function fetchBlogs() {
-  console.log(apiUrl);
-  const response = await httpClient.get(`${apiUrl}/blogs`);
-  console.log(response);
+  if (typeof window === 'undefined') {
+    return {
+      data: [],
+      pagination: { page: 1, limit: 10, total: 0, totalPages: 0 },
+    };
+  }
+  const response = await httpClient.get('/blogs');
+  return response;
+}
+
+export async function createBlog({
+  title,
+  content,
+  status = 'published',
+  authorId,
+}: {
+  title: string;
+  content: string;
+  status?: string;
+  authorId: string;
+}) {
+  const response = await httpClient.post('/blogs', {
+    title,
+    content,
+    status,
+    authorId,
+  });
   return response;
 }
