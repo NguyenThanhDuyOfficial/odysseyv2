@@ -105,6 +105,7 @@ export default function Header() {
                       width={24}
                       height={24}
                       className="rounded-full"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     ></Image>
                   )}
                   {session?.user

@@ -11,14 +11,14 @@ import { EyeIcon, HeartIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import Image from 'next/image';
+import { BlogDTO } from '@odyssey/shared';
 
-export default function BlogCard({ data }) {
+export default function BlogCard({ data }: { data: BlogDTO }) {
   const t = useTranslations('Blog');
   if (!data.posts.featuredImageUrl) {
     data.posts.featuredImageUrl =
       'https://images.pexels.com/photos/28441747/pexels-photo-28441747.jpeg';
   }
-  console.log(data);
   return (
     <Card size="sm" className="relative mx-auto w-full max-w-sm pt-0">
       <div className="relative w-full aspect-video">
@@ -27,6 +27,7 @@ export default function BlogCard({ data }) {
           alt="Blog Image"
           fill
           className="object-cover "
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </div>
       <CardHeader>
@@ -62,7 +63,9 @@ export default function BlogCard({ data }) {
       <CardFooter className="flex justify-between">
         <Button
           nativeButton={false}
-          render={<Link href={data.posts.slug}>{t('readNow')}</Link>}
+          render={
+            <Link href={`/blogs/${data.posts.slug}`}>{t('readNow')}</Link>
+          }
         ></Button>
         <div className="space-x-4">
           <Badge variant="outline" className="px-2 h-6">

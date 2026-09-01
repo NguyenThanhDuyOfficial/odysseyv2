@@ -1,13 +1,14 @@
+import { BlogsResponnseDTO } from '@odyssey/shared';
 import { httpClient } from '../httpClient';
 
-export async function fetchBlogs() {
+export async function fetchBlogs(): Promise<BlogsResponnseDTO> {
   if (typeof window === 'undefined') {
     return {
       data: [],
       pagination: { page: 1, limit: 10, total: 0, totalPages: 0 },
     };
   }
-  const response = await httpClient.get('/blogs');
+  const response = await httpClient.get<BlogsResponnseDTO>('/blogs');
   return response;
 }
 

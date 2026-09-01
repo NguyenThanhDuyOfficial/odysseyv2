@@ -7,6 +7,7 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
+    "start": "pnpm --filter web start",
     "db:reset": "turbo run reset --filter @odyssey/database",
     "db:generate": "turbo run generate --filter @odyssey/database",
     "db:migrate": "turbo run migrate --filter @odyssey/database",

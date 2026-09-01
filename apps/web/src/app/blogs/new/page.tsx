@@ -41,13 +41,11 @@ export default function NewBlogPage() {
         excerpt,
         authorId: session!.user.id,
       });
-      console.log(data);
       router.push(`/blogs/${data.slug}`);
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : 'Something went wrong';
       setError(errorMessage);
-      console.log(err);
     } finally {
       setIsLoading(false);
     }
@@ -64,7 +62,7 @@ export default function NewBlogPage() {
           onChange={(e) => setTitle(e.target.value)}
           className="w-full"
         />
-        <Button>{t('preview')}</Button>
+        <Button disabled={true}>{t('preview')}</Button>
         <Button onClick={handlePublish}>{t('publish')}</Button>
       </form>
       <Tiptap onChangeAction={(content) => setContent(content)} />
