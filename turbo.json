@@ -1,23 +1,32 @@
 {
   "$schema": "https://turborepo.dev/schema.json",
   "globalDependencies": ["**/.env.*local"],
-  "globalEnv": ["DATABASE_URL"],
+  "globalEnv": ["DATABASE_URL", "NODE_ENV"],
   "tasks": {
     "dev": {
       "cache": false,
-      "persistent": true
+      "persistent": true,
+      "env": [
+        "DISCORD_CLIENT_ID",
+        "DISCORD_CLIENT_SECRET",
+        "JWT_SECRET",
+        "JWT_REFRESH_SECRET"
+      ]
     },
     "build": {
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**", "!.next/dev/**", "dist/**"]
     },
-    "db:migrate": {
+    "reset": {
       "cache": false
     },
-    "db:push": {
+    "migrate": {
       "cache": false
     },
-    "db:seed": {
+    "push": {
+      "cache": false
+    },
+    "seed": {
       "cache": false
     },
     "generate": {

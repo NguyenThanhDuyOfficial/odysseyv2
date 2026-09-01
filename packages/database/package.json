@@ -2,13 +2,15 @@
   "name": "@odyssey/database",
   "version": "1.0.0",
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./schema": "./src/db/schema/index.ts",
+    "./repository": "./src/db/repositories/index.ts"
   },
   "scripts": {
-    "db:migrate": "drizzle-kit migrate",
-    "db:push": "drizzle-kit push",
-    "db:seed": "",
-    "dev": "tsc --watch",
+    "reset": "docker exec -it odyssey-db-1 psql -U user -d db -c \" DROP SCHEMA public CASCADE; CREATE SCHEMA public; \" && rm -rf drizzle",
+    "migrate": "drizzle-kit migrate",
+    "push": "drizzle-kit push",
+    "seed": "",
     "generate": "drizzle-kit generate",
     "lint": "eslint . --max-warnings 0",
     "prebuild": "pnpm run generate",
@@ -16,6 +18,8 @@
     "studio": "drizzle-kit studio"
   },
   "dependencies": {
+    "@auth/drizzle-adapter": "^1.11.3",
+    "@odyssey/error-handling": "workspace:*",
     "dotenv": "^17.4.2",
     "drizzle-orm": "1.0.0-rc.4",
     "pg": "^8.23.0"

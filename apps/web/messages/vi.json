@@ -1,0 +1,70 @@
+{
+  "Error": {
+    "USERNAME_REQUIRED": "Phải có tên",
+    "USERNAME_TOO_LONG": "Tên quá dài",
+    "EMAIL_INVALID": "Email không hợp lệ",
+    "EMAIL_REQUIRED": "Phải có email",
+    "EMAIL_TOO_LONG": "Email quá dài",
+    "PASSWORD_TOO_SHORT": "Password quá ngắn",
+    "PASSWORD_TOO_LONG": "Password quá dài",
+    "PASSWORD_NO_UPPERCASE": "Password phải có chữ hoa",
+    "PASSWORD_NO_LOWERCASE": "Password phải có chữ thường",
+    "PASSWORD_NO_NUMBER": "Password phải có số",
+    "PASSWORD_NO_SPECIAL_CHAR": "Password phải có ký tự đặc biệt",
+    "EMAIL_ALREADY_REGISTERED": "Email đã được đăng ký",
+    "INVALID_EMAIL_OR_PASSWORD": "Email hoặc mật khẩu không đúng",
+    "ACCOUNT_IS_DISABLED": "Tài khoản đã bị khóa",
+    "ACCOUNT_DATA_INCONSISTENCY": "Đây là lỗi của chúng tôi",
+    "INVALID_TOKEN": "Token không hợp lệ",
+    "INVALID_OR_EXPIRED_TOKEN": "Token hết hạn hoặc không hợp lệ",
+    "EXPIRED_TOKEN": "Token đã hết hạn",
+    "LOGIN_FAILED": "Thất bại"
+  },
+  "Common": {
+    "dark": "Đổi sang nền tối",
+    "light": "Đổi sang nền sáng"
+  },
+  "Header": {
+    "goToHome": "Về trang chính",
+    "openNavbar": "Mở thanh điều hướng",
+    "appName": "Odyssey",
+    "guide": "Hướng dẫn",
+    "blog": "Đọc Blogs",
+    "login": "Đăng nhập",
+    "logout": "Đăng xuất"
+  },
+  "AuthForm": {
+    "login": "Đăng nhập",
+    "register": "Đăng ký",
+    "email": "Email",
+    "password": "Mật khẩu",
+    "username": "Tên người dùng",
+    "isLoading": "Odyssey đang làm nhiệm vụ...",
+    "error": "thất bại"
+  },
+  "HomePage": {
+    "heroImage": "Ảnh trang trí",
+    "title": "Học,\nHọc nữa,\nHọc mãi,",
+    "description": "Học tập, tinh tấn, và tìm đến hạnh phúc cùng với Odyssey",
+    "helper": "Cần hỗ trợ? vào "
+  },
+  "Blog": {
+    "title": "Bài học và biết ơn",
+    "description": "Nơi bạn dùng sự nhiệt huyết để học hỏi và chia sẻ những trải nghiệm độc nhất, kiến thức thú vị cho mọi người và cho bản thân.",
+    "readNow": "Đọc ngay",
+    "createPost": "Đăng bài",
+    "newest": "Mới nhất",
+    "mostViewed": "Xem nhiều",
+    "mostVoted": "Được yêu thích"
+  },
+  "BlogNew": {
+    "addCategories": "Thêm Tag",
+    "addFeatureImageUrl": "Thêm Ảnh",
+    "draft": "Lưu nháp",
+    "drafted": "Đã lưu nháp",
+    "publish": "Đăng bài",
+    "title": "Tựa đề",
+    "content": "Ngày xửa ngày xưa... có bà bán dưa...",
+    "preview": "Xem trước"
+  }
+}
