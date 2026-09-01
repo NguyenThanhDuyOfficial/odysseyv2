@@ -7,7 +7,6 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { httpClient } from '../../../lib/httpClient';
 import { authClient } from '../../../lib/auth-client';
-import { createBlog } from '../../../lib/api/blogs';
 
 export default function NewBlogPage() {
   const router = useRouter();
@@ -17,6 +16,10 @@ export default function NewBlogPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const { data: session } = authClient.useSession();
+
+  if (isLoading) {
+    return <div>loading...</div>;
+  }
 
   const handlePublish = async () => {
     if (!title.trim()) {
@@ -30,14 +33,16 @@ export default function NewBlogPage() {
 
     setIsLoading(true);
     setError('');
+    const excerpt = content.slice(0, 100);
     try {
       const data = await httpClient.post('/blogs', {
         title,
         content,
+        excerpt,
         authorId: session!.user.id,
       });
       console.log(data);
-      router.push(`/blogs/${data.id}`);
+      router.push(`/blogs/${data.slug}`);
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : 'Something went wrong';

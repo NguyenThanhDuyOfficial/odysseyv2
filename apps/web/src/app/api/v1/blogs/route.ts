@@ -7,7 +7,7 @@ export async function GET() {
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
-  const { title, content, authorId, status } = body;
+  const { title, content, authorId, status, excerpt } = body;
 
   const slug = title
     .replace(/[^a-z0-9\s-]/g, '')
@@ -20,6 +20,7 @@ export async function POST(request: NextRequest) {
     slug,
     content,
     authorId,
+    excerpt,
     createdAt: new Date(),
     updatedAt: new Date(),
     updatedBy: authorId,

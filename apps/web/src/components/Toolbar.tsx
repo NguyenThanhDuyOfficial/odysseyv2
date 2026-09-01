@@ -23,10 +23,8 @@ import {
   AlignJustify,
   Highlighter,
   Palette,
-  Code,
   Code2,
   Minus,
-  Eraser,
   Ellipsis,
 } from 'lucide-react';
 
@@ -52,6 +50,7 @@ import {
 import { Input } from '@odyssey/ui/components/ui/input';
 import { useCallback, useState, memo } from 'react';
 import { cn } from '@odyssey/ui/lib/utils';
+import { Icon } from 'next/dist/lib/metadata/types/metadata-types';
 
 const ToolbarButton = memo(
   ({
@@ -62,7 +61,7 @@ const ToolbarButton = memo(
   }: {
     onClick: () => void;
     isActive?: boolean;
-    icon: any;
+    icon: Icon;
     label: string;
   }) => {
     return (

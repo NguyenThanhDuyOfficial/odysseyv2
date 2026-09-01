@@ -9,7 +9,10 @@ const nextConfig: NextConfig = {
   transpilePackages: ['@odyssey/ui'],
   allowedDevOrigins: ['192.168.1.19'],
   images: {
-    remotePatterns: [new URL('https://cdn.discordapp.com/**')],
+    remotePatterns: [
+      new URL('https://cdn.discordapp.com/**'),
+      new URL('https://images.pexels.com/photos/**'),
+    ],
   },
 };
 const withMDX = createMDX();

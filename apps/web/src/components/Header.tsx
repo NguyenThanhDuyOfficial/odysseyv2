@@ -37,8 +37,7 @@ export default function Header() {
     },
   ];
 
-  const { data: session, isPending, error, refetch } = authClient.useSession();
-  console.log(session, isPending, error, refetch);
+  const { data: session } = authClient.useSession();
 
   const { isAuthenticated, user, logout } = useAuthStore(
     useShallow((state) => ({

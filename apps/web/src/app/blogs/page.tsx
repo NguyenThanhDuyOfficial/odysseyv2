@@ -4,10 +4,17 @@ import {
   QueryClient,
 } from '@tanstack/react-query';
 import { fetchBlogs } from '../../lib/api/blogs';
-import BlogsList from '../../components/BlogsList';
+import BlogsClientPage from '../../components/BlogsPage';
 
 export default async function BlogsPage() {
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        staleTime: 1000 * 5 * 60,
+        gcTime: 24 * 60 * 60 * 1000,
+      },
+    },
+  });
 
   await queryClient.query({
     queryKey: ['blogs'],
@@ -18,7 +25,7 @@ export default async function BlogsPage() {
 
   return (
     <HydrationBoundary state={dehydratedState}>
-      <BlogsList></BlogsList>
+      <BlogsClientPage></BlogsClientPage>
     </HydrationBoundary>
   );
 }

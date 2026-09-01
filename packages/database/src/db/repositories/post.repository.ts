@@ -1,4 +1,4 @@
-import { db } from '../..';
+import { db, users } from '../..';
 import {
   posts,
   type Post,
@@ -81,6 +81,7 @@ export class PostRepository extends BaseRepository<Post, NewPost> {
       const result = await db
         .select()
         .from(posts)
+        .leftJoin(users, eq(posts.authorId, users.id))
         .where(where)
         .orderBy(
           sortOrder === 'desc'
@@ -98,7 +99,7 @@ export class PostRepository extends BaseRepository<Post, NewPost> {
       const total = Number(totalResult[0]?.count || 0);
 
       return {
-        data: result as Post[],
+        data: result,
         pagination: {
           page,
           limit,
