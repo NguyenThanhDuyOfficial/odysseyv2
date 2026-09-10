@@ -1,0 +1,11 @@
+{
+  "name": "@odyssey/error-handling",
+  "version": "1.0.0",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "devDependencies": {
+    "@odyssey/typescript-config": "workspace:*",
+    "@odyssey/eslint-config": "workspace:*"
+  }
+}

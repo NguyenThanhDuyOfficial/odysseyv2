@@ -2,7 +2,6 @@
   "name": "@odyssey/typescript-config",
   "version": "0.0.0",
   "private": true,
-  "license": "GPL-3.0-only",
   "publishConfig": {
     "access": "public"
   }

@@ -1,0 +1,5 @@
+{
+  "extends": "@odyssey/typescript-config/base.json",
+  "include": ["src/**/*.ts", "eslint.config.mjs"],
+  "exclude": ["**/dist", "node_modules"]
+}

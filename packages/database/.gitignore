@@ -1,0 +1,9 @@
+drizzle/
+dist/
+node_modules/
+.env
+*.log
+
+*.d.ts
+*.d.ts.map
+*.js
