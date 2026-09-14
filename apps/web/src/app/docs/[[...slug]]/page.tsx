@@ -16,6 +16,8 @@ export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
   if (!page) notFound();
 
   const MDX = page.data.body;
+  const lastUpdated = page.data.lastUpdated;
+  const author = page.data.author;
 
   return (
     <DocsPage toc={page.data.toc} full={page.data.full}>
@@ -24,10 +26,13 @@ export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
       <DocsBody>
         <MDX
           components={getMDXComponents({
-            // this allows you to link to other pages with relative file paths
             a: createRelativeLink(source, page),
           })}
         />
+        <div className="md:flex justify-between mr-4 text-muted-foreground">
+          {lastUpdated && <div>Cập nhật gần nhất: {lastUpdated}</div>}
+          {author && <div>{author}</div>}
+        </div>
       </DocsBody>
     </DocsPage>
   );
