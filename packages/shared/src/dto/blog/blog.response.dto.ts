@@ -7,7 +7,7 @@ export interface PaginationDTO {
   total: number;
   totalPages: number;
 }
-export interface BlogsResponnseDTO {
+export interface BlogsResponseDTO {
   data: BlogDTO[];
   pagination: PaginationDTO;
 }

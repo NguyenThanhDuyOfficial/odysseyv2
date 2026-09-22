@@ -6,11 +6,11 @@ import BlogCard from './BlogCard';
 import { useTranslations } from 'next-intl';
 import { Button } from '@odyssey/ui/components/ui/button';
 import Link from 'next/link';
-import { BlogsResponnseDTO } from '@odyssey/shared';
+import { BlogsResponseDTO } from '@odyssey/shared';
 
 export default function BlogsPage() {
   const t = useTranslations('Blog');
-  const { data, isLoading, error, isError } = useQuery<BlogsResponnseDTO>({
+  const { data, isLoading, error, isError } = useQuery<BlogsResponseDTO>({
     queryKey: ['blogs'],
     queryFn: fetchBlogs,
   });

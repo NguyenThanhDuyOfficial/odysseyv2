@@ -1,11 +1,14 @@
 import { postRepository } from '@odyssey/database';
+import { CreateBlogResponseDTO } from '@odyssey/shared';
 import { NextRequest, NextResponse } from 'next/server';
 export async function GET() {
   const response = await postRepository.findMany();
   return NextResponse.json(response);
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(
+  request: NextRequest,
+): Promise<NextResponse<CreateBlogResponseDTO>> {
   const body = await request.json();
   const { title, content, authorId, status, excerpt } = body;
 
