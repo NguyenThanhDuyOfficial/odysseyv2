@@ -7,7 +7,6 @@ import {
   CardTitle,
 } from '@odyssey/ui/components/ui/card';
 import { EyeIcon, HeartIcon } from 'lucide-react';
-import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { BlogDTO } from '@odyssey/shared';
 import Link from 'next/link';
