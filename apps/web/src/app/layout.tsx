@@ -6,6 +6,8 @@ import { NextIntlClientProvider } from 'next-intl';
 import TanstackQueryProvider from '../providers/tanstack-query-provider';
 import { TooltipProvider } from '@odyssey/ui/components/ui/tooltip';
 import { RootProvider } from 'fumadocs-ui/provider/next';
+import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -38,6 +40,8 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
             </NextIntlClientProvider>
           </ThemeProvider>
         </RootProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
