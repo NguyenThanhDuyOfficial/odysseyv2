@@ -37,7 +37,7 @@ export default function NewBlogPage() {
     setError('');
     let excerpt = '';
     if (description) {
-      excerept = description;
+      excerpt = description;
     } else {
       excerpt = content.slice(0, 100);
     }

@@ -7,13 +7,11 @@ import {
   CardTitle,
 } from '@odyssey/ui/components/ui/card';
 import { EyeIcon, HeartIcon } from 'lucide-react';
-import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { BlogDTO } from '@odyssey/shared';
 import Link from 'next/link';
 
 export default function BlogCard({ data }: { data: BlogDTO }) {
-  const t = useTranslations('Blog');
   if (!data.posts.featuredImageUrl) {
     data.posts.featuredImageUrl =
       'https://images.pexels.com/photos/28441747/pexels-photo-28441747.jpeg';
