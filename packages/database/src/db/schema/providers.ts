@@ -4,7 +4,6 @@ import {
   text,
   timestamp,
   index,
-  uniqueIndex,
 } from 'drizzle-orm/pg-core';
 import { timestamps } from './columns.helper';
 import { users } from './users';
@@ -39,7 +38,7 @@ export const providers = snakeCase.table(
   (table) => [
     index('providers_user_id_idx').on(table.userId),
     index('providers_email_idx').on(table.email),
-    uniqueIndex('uq_providers_provider_provider_id')
+    index('uq_providers_provider_provider_id')
       .on(table.provider, table.providerId)
       .where(sql`${table.providerId} IS NOT NULL`),
   ],
