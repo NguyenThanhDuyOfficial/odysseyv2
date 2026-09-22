@@ -7,11 +7,13 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { httpClient } from '../../../lib/httpClient';
 import { authClient } from '../../../lib/auth-client';
+import { CreateBlogResponseDTO } from '@odyssey/shared';
 
 export default function NewBlogPage() {
   const router = useRouter();
   const t = useTranslations('BlogNew');
   const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
   const [content, setContent] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
@@ -33,9 +35,14 @@ export default function NewBlogPage() {
 
     setIsLoading(true);
     setError('');
-    const excerpt = content.slice(0, 100);
+    let excerpt = '';
+    if (description) {
+      excerept = description;
+    } else {
+      excerpt = content.slice(0, 100);
+    }
     try {
-      const data = await httpClient.post('/blogs', {
+      const data = await httpClient.post<CreateBlogResponseDTO>('/blogs', {
         title,
         content,
         excerpt,
@@ -55,14 +62,23 @@ export default function NewBlogPage() {
     <main className="sticky top-30 h-[calc(100vh-80px)] container mx-auto pb-8 px-5 md:px-20 flex flex-col gap-2">
       {error && <p>{error}</p>}
       <form className="flex gap-4">
-        <input
-          type="text"
-          placeholder={t('title')}
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          className="w-full"
-        />
-        <Button disabled={true}>{t('preview')}</Button>
+        <div className="w-full">
+          <input
+            type="text"
+            placeholder={t('title')}
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            className="w-full"
+          />
+          <input
+            type="text"
+            placeholder={t('description')}
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            className="w-full"
+          />
+        </div>
+        {/* <Button disabled={true}>{t('preview')}</Button> */}
         <Button onClick={handlePublish}>{t('publish')}</Button>
       </form>
       <Tiptap onChangeAction={(content) => setContent(content)} />
